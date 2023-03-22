@@ -6,31 +6,51 @@
 // поздравляем!'.
 
 
-let randomNum = Math.floor(Math.random() * 100);
-let start = 0;
-let end = 100;
-
 
 // console.log(randomNum);
 
+class GuessingGame {
 
-for (let i = start; i <= end; i++) {
+    middlewar() {
+        try {
 
-    let myNum = +prompt(`введите число от ${start} до ${end}`);
-
-    if (myNum == randomNum) {
-        console.log(`ВУГАДАЛ ${myNum}`);
-        // alert(`ВУГАДАЛ ${myNum}`);
-        break;
-    } else if (myNum < randomNum) {
-        start = myNum;
-        console.log(`МАЛО ${myNum}`);
-        // alert(`МАЛО ${myNum}`);
-
-    } else if (myNum > randomNum) {
-        end = myNum;
-        console.log(`МНОГО`);
-        // alert(`МНОГО ${myNum}`);
+        } catch (error) { alert(error.message) }
     }
 
+    generate() {
+
+        return Math.floor(Math.random() * 100);
+
+    }
+
+    searchNumber() {
+        let start = 0;
+        let end = 100;
+        const randomNum = this.generate()
+
+        for (let i = start; i <= end; i++) {
+
+            let myNum = +prompt(`введите число от ${start} до ${end}`);
+
+            if (myNum == randomNum) {
+                // console.log(`ВУГАДАЛ ${myNum}`);
+                alert(`ВУГАДАЛ ${myNum}`);
+                break;
+
+            } else if (myNum < randomNum) {
+                start = myNum;
+                // console.log(`МАЛО ${myNum}`);
+                alert(`МАЛО ${myNum}`);
+
+            } else if (myNum > randomNum) {
+                end = myNum;
+                // console.log(`МНОГО`);
+                alert(`МНОГО ${myNum}`);
+            }
+        }
+    }
 }
+
+const guessingGame = new GuessingGame();
+guessingGame.searchNumber();
+
